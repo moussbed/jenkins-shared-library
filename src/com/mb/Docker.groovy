@@ -18,7 +18,7 @@ class Docker implements Serializable {
                 passwordVariable: 'PASS',
                 usernameVariable: 'USER'
         )]){
-            script.sh ('echo script.$PASS | docker login -u script.$USER --password-stdin ') // Use '' to prevent Interpolation of sensitive environment variables
+            script.sh "echo script.$PASS | docker login -u script.$USER --password-stdin " // Use '' to prevent Interpolation of sensitive environment variables
             script.sh "docker push $imageName"
         }
     }
