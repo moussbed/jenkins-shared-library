@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
+import  com.mb.Docker
 
 def call(String imageName){
-    echo 'Building docker image ....'
-    sh  "docker build -t $imageName ."
+    new Docker(this).buildDockerImage(imageName)
 }

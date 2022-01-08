@@ -1,12 +1,6 @@
 #!/usr/bin/env groovy
 
+import com.mb.Docker
 def call(String imageName){
-    echo 'Pushing docker image to docker hub repository ....'
-    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials',
-            passwordVariable: 'PASS',
-            usernameVariable: 'USER'
-    )]){
-        sh ('echo $PASS | docker login -u $USER --password-stdin ') // Use '' to prevent Interpolation of sensitive environment variables
-        sh "docker push $imageName"
-    }
+    new Docker(this).pushDockerImage(imageName)
 }
