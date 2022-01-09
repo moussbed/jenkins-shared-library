@@ -25,7 +25,7 @@ class GitHub implements Serializable{
             script.sh 'git add .'
             script.sh 'git commit -m "ci: version bump"'
             // script.sh 'git push origin HEAD:jenkins-jobs'
-            script.sh ('git push https://$USER:$PASS@github.com/$USER/java-mvn-app.git')
+            script.sh ('git push https://$USER:$PASS@github.com/$USER/java-mvn-app.git HEAD:jenkins-jobs')
         }
     }
 }
