@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
+import  com.mb.Maven
+
 def call(){
-    echo "Building jar artefact for ${env.BRANCH_NAME} branch ...."
-    sh 'mvn package'
+  new Maven(this).buildJar()
 }
