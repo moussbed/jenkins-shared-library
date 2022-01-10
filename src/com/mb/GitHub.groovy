@@ -14,6 +14,7 @@ class GitHub implements Serializable{
                 passwordVariable: 'PASS',
                 usernameVariable: 'USER'
         )]){
+            script.sh 'git config --global --remove-section http.proxy'
             script.sh 'git config user.email "jenkins@example.com"'
             script.sh 'git config user.name "jenkins"'
 
