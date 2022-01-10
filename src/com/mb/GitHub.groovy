@@ -17,6 +17,7 @@ class GitHub implements Serializable{
             script.sh 'git config user.email "jenkins@example.com"'
             script.sh 'git config user.name "jenkins"'
             script.sh 'git config --global --unset http.proxy'
+            script.sh 'git config --global --unset https.proxy' 
 
             script.sh 'git status'
             script.sh 'git branch'
