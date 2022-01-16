@@ -14,6 +14,14 @@ class GitHub implements Serializable{
                 keyFileVariable: 'keyfile'
         )]){
             script.sh 'mkdir -p ~/.ssh && cp ${keyfile} ~/.ssh/id_rsa'
+
+            script.sh 'git config user.email "jenkins@example.com"'
+            script.sh 'git config user.name "jenkins"'
+
+            script.sh 'git status'
+            script.sh 'git branch'
+            script.sh 'git config --list'
+
             script.sh 'git remote -v'
             script.sh 'git show-ref'
 
