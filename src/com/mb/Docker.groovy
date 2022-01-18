@@ -2,7 +2,6 @@ package com.mb
 
 class Docker implements Serializable {
     def script
-    def latest
 
     Docker(script) {
         this.script = script
@@ -10,9 +9,7 @@ class Docker implements Serializable {
 
     def buildDockerImage(String imageName){
         script.echo 'Building docker image ....'
-        def latest= imageName.split(":")[0]+":latest"
         script.sh  "docker build -t $imageName ."
-        script.sh  "docker tag $imageName  $latest "
     }
 
     def dockerLogin(){
@@ -31,8 +28,11 @@ class Docker implements Serializable {
                 passwordVariable: 'PASS',
                 usernameVariable: 'USER'
         )]){
+
+            def latestImage= imageName.split(":")[0]+":latest"
+            script.sh "docker tag $imageName  $latestImage "
             script.sh "docker push $imageName"
-            script.sh "docker push $latest"
+            script.sh "docker push $latestImage"
         }
     }
 
