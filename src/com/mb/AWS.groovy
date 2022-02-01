@@ -18,7 +18,7 @@ class AWS implements  Serializable{
         }
     }
 
-    def pushDockerImageECR(String imageName){
+    def pushImageECR(String imageName){
         script.echo 'Pushing docker image to ECR registry ....'
         script.withCredentials([script.usernamePassword(credentialsId: 'ecr-credentials',
                 passwordVariable: 'PASS',
