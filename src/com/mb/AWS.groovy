@@ -14,7 +14,7 @@ class AWS implements  Serializable{
                 passwordVariable: 'PASS',
                 usernameVariable: 'USER'
         )]){
-            script.sh ('echo $PASS | docker login --username $USER --password-stdin  ${script.env.$REPO_SERVER}') // Use '' to prevent Interpolation of sensitive environment variables
+            script.sh ('echo $PASS | docker login --username $USER --password-stdin  $REPO_SERVER') // Use '' to prevent Interpolation of sensitive environment variables
         }
     }
 
