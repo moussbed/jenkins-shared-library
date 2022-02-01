@@ -9,7 +9,7 @@ class AWS implements  Serializable{
     }
 
     def dockerLoginECR(){
-        script.echo 'Logging to ECR registry ....'
+        script.echo 'Logging to ECR registry .....'
         script.withCredentials([script.usernamePassword(credentialsId: 'ecr-credentials',
                 passwordVariable: 'PASS',
                 usernameVariable: 'USER'
